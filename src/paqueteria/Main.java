@@ -1,19 +1,14 @@
 package paqueteria;
 
+import javax.swing.SwingUtilities;
+
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        CentroLogistico centro = new CentroLogistico();
-        centro.iniciar();
-        String anterior = "";
-        for (int i = 0; i < 20; i++) {
-            Thread.sleep(1000);
-            String actual = centro.obtenerRegistro();
-            if (actual.length() > anterior.length()) {
-                System.out.print(actual.substring(anterior.length()));
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                VentanaPrincipal ventana = new VentanaPrincipal();
+                ventana.setVisible(true);
             }
-            anterior = actual;
-        }
-        centro.detener();
-        System.out.println("Simulacion detenida.");
+        });
     }
 }
