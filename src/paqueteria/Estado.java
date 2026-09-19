@@ -1,0 +1,15 @@
+package paqueteria;
+
+public enum Estado {
+    RECIBIDO,
+    ALMACENADO,
+    CLASIFICANDO,
+    CLASIFICADO,
+    EMPAQUETANDO,
+    EMPAQUETADO,
+    EN_EXPEDICION,
+    EN_REPARTO,
+    NUEVO_INTENTO,
+    ENTREGADO,
+    DEVUELTO
+}
