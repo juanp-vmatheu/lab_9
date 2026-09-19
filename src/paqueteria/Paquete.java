@@ -55,6 +55,51 @@ public class Paquete {
         return estado;
     }
 
+    public synchronized boolean cambiarEstado(Estado nuevo) {
+        boolean valido;
+        switch (estado) {
+            case RECIBIDO:
+                valido = nuevo == Estado.ALMACENADO;
+                break;
+            case ALMACENADO:
+                valido = nuevo == Estado.CLASIFICANDO;
+                break;
+            case CLASIFICANDO:
+                valido = nuevo == Estado.CLASIFICADO;
+                break;
+            case CLASIFICADO:
+                valido = nuevo == Estado.EMPAQUETANDO;
+                break;
+            case EMPAQUETANDO:
+                valido = nuevo == Estado.EMPAQUETADO;
+                break;
+            case EMPAQUETADO:
+                valido = nuevo == Estado.EN_EXPEDICION;
+                break;
+            case EN_EXPEDICION:
+                valido = nuevo == Estado.EN_REPARTO;
+                break;
+            case EN_REPARTO:
+                valido = nuevo == Estado.ENTREGADO || nuevo == Estado.NUEVO_INTENTO;
+                break;
+            case NUEVO_INTENTO:
+                valido = nuevo == Estado.EN_REPARTO || nuevo == Estado.DEVUELTO;
+                break;
+            case ENTREGADO:
+                valido = false;
+                break;
+            case DEVUELTO:
+                valido = false;
+                break;
+            default:
+                valido = false;
+        }
+        if (valido) {
+            estado = nuevo;
+        }
+        return valido;
+    }
+
     public String getRuta() {
         return ruta;
     }
