@@ -120,7 +120,8 @@ public class VentanaPrincipal extends JFrame {
 
         botonEstadisticas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(VentanaPrincipal.this, "Panel de estadisticas pendiente.");
+                VentanaEstadisticas ventana = new VentanaEstadisticas(VentanaPrincipal.this, centro);
+                ventana.setVisible(true);
             }
         });
 
