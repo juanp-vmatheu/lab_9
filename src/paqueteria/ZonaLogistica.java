@@ -103,6 +103,14 @@ public class ZonaLogistica {
         notifyAll();
     }
 
+    public synchronized void reactivar() {
+        activa = true;
+    }
+
+    public synchronized void vaciar() {
+        paquetes.vaciar();
+    }
+
     public synchronized int getTamanio() {
         return paquetes.tamanio();
     }
